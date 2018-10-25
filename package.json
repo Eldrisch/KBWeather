@@ -1,0 +1,29 @@
+{
+  "name": "kbweather",
+  "version": "1.0.0",
+  "description": "KBWeather API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eldrisch/KBWeather.git"
+  },
+  "author": "Kacper Baranowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eldrisch/KBWeather/issues"
+  },
+  "homepage": "https://github.com/Eldrisch/KBWeather#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.7.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "path": "^0.12.7"
+  }
+}
