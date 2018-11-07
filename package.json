@@ -17,13 +17,14 @@
   },
   "homepage": "https://github.com/Eldrisch/KBWeather#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "sass": "^1.14.3"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "eslint": "^5.7.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "express": "^4.16.4"
   }
 }
