@@ -49,8 +49,9 @@ $(function () {
 			mapTypeId: 'terrain',
 			disableDefaultUI: true,
 			draggable: false,
-			draggableCursor: 'null',
-			gestureHandling: 'none'
+			draggableCursor: 'auto',
+			gestureHandling: 'none',
+			clickableIcons: false,
 		});
 	};
 	let getForecasts = (locationKey) => {

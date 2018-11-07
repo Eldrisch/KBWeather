@@ -16,9 +16,7 @@
     "url": "https://github.com/Eldrisch/KBWeather/issues"
   },
   "homepage": "https://github.com/Eldrisch/KBWeather#readme",
-  "dependencies": {
-    "sass": "^1.14.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "eslint": "^5.7.0",
