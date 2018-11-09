@@ -7,24 +7,30 @@
   <title>KB Weather</title>
   <link rel="stylesheet" href="styles/map-styles.css">
   <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Signika" rel="stylesheet">
 </head>
 
-<body>
+<body id="container">
   <header>
-    <h1>Sprawdź pogodę w swoim mieście !</h1>
-    <input id="search-bar" type="text" placeholder="np. Sosnowiec, Polska" />
-    <input id="search-btn" type="submit" value="Search" />
+    <h1>Sprawdź pogodę w swoim mieście!</h1>
+    <input id="search-bar" type="text" placeholder="np. Sosnowiec, Polska" /><input id="search-btn" type="submit" value="Prognozuj" />
+    <div id="error"></div>
   </header>
   <div id="main">
+    <div>
+      <ul id="multiple-locations"></ul>
+    </div>
     <div id="forecasts"></div>
   </div>
-  <div id="map"></div>
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script src="scripts/weather-data.js"></script>
   <script src="scripts/map.js" type="text/javascript"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9t2M8ZxSZ97qkxQ-HvECNu0fg1DcmePY&callback=initMap"
-    async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9t2M8ZxSZ97qkxQ-HvECNu0fg1DcmePY" async defer></script>
+  
 </body>
 
 </html>

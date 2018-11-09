@@ -1,3 +1,4 @@
+
 $(function () {
 	let isMetric = true;
 	let locationUrl = "";
@@ -15,32 +16,56 @@ $(function () {
 			dataType: "jsonp",
 			cache: true,
 			jsonpCallback: "callback",
-			success: (data) => { cityLocationFound(data); }
+			success: (data) => { cityLocationFound(data); },
+			error: function (xhr) {
+				alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+			}
 		});
 	};
 	let cityLocationFound = (data) => {
 		let locationKey = null;
 		let mapLatitude = null;
 		let mapLongitude = null;
+		let error = '';
+		let multipleLocations = ``;
 		if (data.length == 1) {
 			locationKey = data[0].Key;
 			mapLatitude = data[0].GeoPosition.Latitude;
 			mapLongitude = data[0].GeoPosition.Longitude;
 			console.log(`One location found: ${data[0].LocalizedName} Key: ${locationKey} Latitude: ${mapLatitude} Longitude: ${mapLongitude}`);
-		}
-		else if (data.length == 0) {
-			console.log("No locations found.");
-		}
-		else {
-			locationKey = data[0].Key;
-			mapLatitude = data[0].GeoPosition.Latitude;
-			mapLongitude = data[0].GeoPosition.Longitude;
-			console.log(`Multiple locations found (${data.length}). Selecting the first one: ${data[0].LocalizedName}, ${data[0].Country.ID}. Key: ${locationKey} Latitude: ${mapLatitude} Longitude: ${mapLongitude}`);
-		}
-		if (locationKey != null) {
 			getForecasts(locationKey);
 			initMap(mapLatitude, mapLongitude);
 		}
+		else if (data.length == 0) {
+			console.log("No locations found.");
+			error += '<p>Nie ma takiego miasta! Sprawdź czy poprawnie wpisałeś nazwę!</p>';
+			$('#error').html(error);
+		}
+		else {
+			console.log(`Multiple locations found: (${data.length}).`);
+			for (let i = 0; i < data.length; i++) {
+				try {
+					multipleLocations += `<li>${data[i].LocalizedName}, powiat: ${data[i].SupplementalAdminAreas[0].LocalizedName}, gmina: ${data[i].SupplementalAdminAreas[1].LocalizedName}.<input id="${i}" type="submit" value="Prognozuj" /></li>`;
+				}
+				catch(err) {
+					console.log(err.message);
+					multipleLocations += `<li>${data[i].LocalizedName}, powiat: ${data[i].SupplementalAdminAreas[0].LocalizedName}.<input id="${i}" type="submit" value="Prognozuj" /></li>`;
+				}
+			}
+			$('#multiple-locations').html(multipleLocations);
+			$('#multiple-locations > li > input').click(function () {
+				let idNumber = $(this).prop('id');
+				locationKey = data[idNumber].Key;
+				mapLatitude = data[idNumber].GeoPosition.Latitude;
+				mapLongitude = data[idNumber].GeoPosition.Longitude;
+				getForecasts(locationKey);
+				initMap(mapLatitude, mapLongitude);
+			});
+		}
+		// if (locationKey != null) {
+		// 	getForecasts(locationKey);
+		// 	initMap(mapLatitude, mapLongitude);
+		// }
 	};
 	let initMap = (mapLatitude, mapLongitude) => {
 		let map = new google.maps.Map(document.getElementById('map'), {
@@ -63,7 +88,7 @@ $(function () {
 			cache: true,
 			jsonpCallback: "callback",
 			success: (data) => {
-				let minTemp, maxTemp, dayRainfall, dayWindSpeed, forecastDescription;
+				let minTemp, maxTemp, dayRainfall, dayWindSpeed, forecastDescription, dayRainProbability, nightRainProbability;
 				let days = [data.DailyForecasts[0], data.DailyForecasts[1], data.DailyForecasts[2]];
 				let descritpion = ['Dziś', 'Jutro', 'Pojutrze'];
 				let forecasts = ``;
@@ -74,8 +99,10 @@ $(function () {
 					dayRainfall = `<li>Deszcz: ${days[i].Day.Rain.Value}${days[i].Day.Rain.Unit}</li>`;
 					dayWindSpeed = `<li>Prędkość wiatru: ${days[i].Day.Wind.Speed.Value}${days[i].Day.Wind.Speed.Unit}</li>`;
 					forecastDescription = `<li>${days[i].Day.IconPhrase}</li>`;
+					dayRainProbability = `<li>${days[i].Day.RainProbability}</li>`;
+					nightRainProbability = `<li>${days[i].Night.RainProbability}</li>`;
 
-					forecasts += `<ul>${descritpion[i]}${forecastDescription}${maxTemp}${minTemp}${dayRainfall}${dayWindSpeed}<ul>`;
+					forecasts += `<div><ul>${descritpion[i]}${forecastDescription}${maxTemp}${minTemp}${dayRainProbability}${dayRainfall}${dayWindSpeed}${nightRainProbability}<ul></div>`;
 				}
 
 				$('#forecasts').html(forecasts);
