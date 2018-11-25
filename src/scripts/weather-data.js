@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import mainView from './views.js';
 
 $(function () {
 	let isMetric = true;
@@ -6,7 +7,7 @@ $(function () {
 	let forecastsUrl = "";
 	let language = "pl-pl";
 	let details = true;
-	const apiKey = "A5cicXqU66tVCblupsec6swIZmq8V51V";
+	const apiKey = "epAKw1oudUYNVwIx5Wx1rc42FT0R2opG";
 
 	let searchCityLocation = (inputText) => {
 		
@@ -16,13 +17,13 @@ $(function () {
 			type: "GET",
 			url: locationUrl,
 			dataType: "jsonp",
-			cache: false,
+			cache: true,
 			jsonpCallback: "callback",
 			success: (data) => { 
 				cityLocationFound(data);
 			},
 			error: function (xhr) {
-				alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+				console.log('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
 			}
 		});
 	};
@@ -138,7 +139,7 @@ $(function () {
 			type: 'GET',
 			url: forecastsUrl,
 			dataType: 'jsonp',
-			cache: false,
+			cache: true,
 			jsonpCallback: "callback",
 			success: (data) => {
 				let minTemp, maxTemp, minmaxTemp, dayRainfall, daySnowfall, nightRainfall, nightSnowfall, dayWindSpeed, nightWindSpeed, forecastDescription, nightForecastDescription, dayRainProbability, nightRainProbability, realTemp, icon;
@@ -174,11 +175,13 @@ $(function () {
 				$('#detailed-3').html(detailedForecasts[2]);
 			}
 		});
+		mainView();
 	};
 	$('#search-bar').keypress(function (e) {
 		if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
 			let inputText = $('#search-bar').val();
 			searchCityLocation(inputText);
+			$('#search-btn').click();
 			return false;
 		} else {
 			return true;
