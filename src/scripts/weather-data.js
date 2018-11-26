@@ -163,8 +163,11 @@ $(function () {
 					dayRainProbability = `<li>Prawdopodobieństwo deszczu: ${days[i].Day.RainProbability}%</li>`;
 					nightRainProbability = `<li>Prawdopodobieństwo deszczu: ${days[i].Night.RainProbability}</li>`;
 					realTemp = `Odczuwalna ${days[i].RealFeelTemperature.Maximum.Value}°<span class="night-temp">/${days[i].RealFeelTemperature.Minimum.Value}°${days[i].RealFeelTemperature.Minimum.Unit}</span>`;
-					icon = `${days[i].Day.Icon}.png`;
-					
+					if (days[i].Day.Icon < 10) {
+						icon = `0${days[i].Day.Icon}.png`;
+					} else {
+						icon = `${days[i].Day.Icon}.png`;
+					}
 					forecasts += `<div id="forecast-${i+1}"><h1>${descritpion[i]}</h1><br/><img class="forecast-icon" src="images/${icon}" width="75px" height="45px"/><p class="main-temp">${minmaxTemp}</p><br/><p>${realTemp}</p><p>${forecastDescription}</p></div>`;
 					detailedForecasts.push(`<div class="detailed"><ul>${minTemp}${maxTemp}${dayRainProbability}${nightRainProbability}${dayRainfall}${nightRainfall}${daySnowfall}${nightSnowfall}${dayWindSpeed}${nightWindSpeed}</ul></div>`);
 				}
