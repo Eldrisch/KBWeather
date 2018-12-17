@@ -34,7 +34,7 @@ html, body, div, a, p, header, section, article, input, blockquote, h1, h2, h3, 
 html, body {
     width: 100%;
     height: 100%;
-    background-image: url('../images/header-background.jpg');
+    background-color: rgba(179, 179, 179, 0.726);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -212,6 +212,48 @@ input:focus {
 .night-temp {
     font-size: 80%;
     color: var(--dark-color);
+}
+.background-cloudy {
+    background-image: url("../images/cloudy-background.jpg");
+}
+.background-cold {
+    background-image: url("../images/cold-background.jpg");
+}
+.background-fog {
+    background-image: url("../images/fog-background.jpg");
+}
+.background-hazy {
+    background-image: url("../images/hazy-background.jpg");
+}
+.background-header {
+    background-image: url("../images/header-background.jpg");
+}
+.background-hot {
+    background-image: url("../images/hot-background.jpg");
+}
+.background-partly-sunny {
+    background-image: url("../images/partly-sunny-background.jpg");
+}
+.background-rainy {
+    background-image: url("../images/rainy-background.jpg");
+}
+.background-sleet {
+    background-image: url("../images/sleet-background.jpg");
+}
+.background-snow-flurries {
+    background-image: url("../images/snow-flurries-background.jpg");
+}
+.background-snowy {
+    background-image: url("../images/snowy-background.jpg");
+}
+.background-storm {
+    background-image: url("../images/storm-background.jpg");
+}
+.background-sunny {
+    background-image: url("../images/sunny-background.jpg");
+}
+.background-sunny-rain {
+    background-image: url("../images/sunny-rain-background.jpg");
 }
 
 @media screen and (max-width: 1000px) {

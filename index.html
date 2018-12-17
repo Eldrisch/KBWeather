@@ -8,13 +8,39 @@
   <link rel="stylesheet" href="styles/main.css">
   <link href="https://fonts.googleapis.com/css?family=Lobster|Work+Sans|Signika" rel="stylesheet">
   <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+  <script type="text/javascript">
+  let imgSources = [
+		'../images/cloudy-background.jpg',
+		'../images/cold-background.jpg',
+		'../images/fog-background.jpg',
+		'../images/hazy-background.jpg',
+		'../images/header-background.jpg',
+		'../images/hot-background.jpg',
+		'../images/partly-sunny-background.jpg',
+		'../images/rainy-background.jpg',
+		'../images/sleet-background.jpg',
+		'../images/snow-flurries-background.jpg',
+		'../images/snowy-background.jpg',
+		'../images/storm-background.jpg',
+		'../images/sunny-background.jpg',
+		'../images/sunny-rain-background.jpg',
+	];
+	function preloadImages(imgs) {
+		let img;
+		for (let i = 0, len = imgs.length; i < len; ++i) {
+			img = new Image();
+			img.src = imgs[i];
+		}
+	}
+	preloadImages(imgSources);
+  </script>
 </head>
 
-<body id="container">
+<body id="container" class="background-header">
   <header id="header" class="header-start">
     <div>
       <h1>Sprawdź pogodę w swoim mieście!</h1>
-      <input id="search-bar" type="text" placeholder="np. Sosnowiec, Polska" /><input id="search-btn" type="submit"
+      <input id="search-bar" type="text" placeholder="np. Sosnowiec, Polska" maxlength="80"/><input id="search-btn" type="submit"
         value="Prognozuj" />
       <div id="error"></div>
     </div>

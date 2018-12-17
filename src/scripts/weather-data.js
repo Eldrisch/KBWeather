@@ -7,7 +7,7 @@ $(function () {
 	let forecastsUrl = "";
 	let language = "pl-pl";
 	let details = true;
-	const apiKey = "epAKw1oudUYNVwIx5Wx1rc42FT0R2opG";
+	const apiKey = "7VebdzQ49vM27xSKc5a6fe3QCuCbEAub";
 
 	let searchCityLocation = (inputText) => {
 		
@@ -28,7 +28,6 @@ $(function () {
 		});
 	};
 	let cityLocationFound = (data) => {
-		$('#multiple-locations').empty();
 		let locationKey = null;
 		let mapLatitude = null;
 		let mapLongitude = null;
@@ -40,13 +39,11 @@ $(function () {
 			mapLatitude = data[0].GeoPosition.Latitude;
 			mapLongitude = data[0].GeoPosition.Longitude;
 			population = data[0].Details.Population;
-			console.log(`One location found: ${data[0].LocalizedName} Key: ${locationKey} Latitude: ${mapLatitude} Longitude: ${mapLongitude}`);
 			getForecasts(locationKey);
 			initMap(mapLatitude, mapLongitude, population);
 		}
 		else if (data.length == 0) {
-			console.log("No locations found.");
-			error += '<p>Nie ma takiego miasta! Sprawdź czy poprawnie wpisałeś nazwę!</p>';
+			error += '<p>Nie ma takiego miasta. Sprawdź czy poprawnie wpisałeś nazwę!</p>';
 			$('#error').html(error);
 		}
 		else {
@@ -58,18 +55,15 @@ $(function () {
 			initMap(mapLatitude, mapLongitude, population);
 			let locationsInfo = 'Hmmm... Wygląda na to, że Twoje miasto występuje na mapie świata więcej niż raz. Wybierz swoje z listy poniżej:';
 			multipleLocations += `<h3>${locationsInfo}</h3>`;
-			console.log(`Multiple locations found: (${data.length}).`);
 			for (let i = 0; i < data.length; i++) {
 				try {
 					multipleLocations += `<li id="${i}">${data[i].LocalizedName}, powiat: ${data[i].SupplementalAdminAreas[0].LocalizedName}, gmina: ${data[i].SupplementalAdminAreas[1].LocalizedName}, ${data[i].Country.LocalizedName}</li>`;
 				}
 				catch (err) {
 					try {
-						console.log(err.message);
 						multipleLocations += `<li id="${i}">${data[i].LocalizedName}, ${data[i].SupplementalAdminAreas[0].LocalizedName}, ${data[i].Country.LocalizedName}</li>`;
 					}
 					catch (err) {
-						console.log(err.message);
 						multipleLocations += `<li id="${i}">${data[i].LocalizedName}, ${data[i].AdministrativeArea.LocalizedName} ${data[i].Country.LocalizedName}</li>`;
 					}
 				}
@@ -92,32 +86,18 @@ $(function () {
 		let autoZoom = null;
 		if (population > 15000000) {
 			autoZoom = 8;
-			console.log(autoZoom);
-			console.log(population);
 		} else if (population > 1500000) {
 			autoZoom = 9;
-			console.log(autoZoom);
-			console.log(population);
 		} else if (population > 150000) {
 			autoZoom = 10;
-			console.log(autoZoom);
-			console.log(population);
 		} else if (population > 15000) {
 			autoZoom = 11;
-			console.log(autoZoom);
-			console.log(population);
 		} else if (population > 5000 ){
 			autoZoom = 12;
-			console.log(autoZoom);
-			console.log(population);
 		} else if (population > 500) {
 			autoZoom = 13;
-			console.log(autoZoom);
-			console.log(population);
 		} else {
 			autoZoom = 14;
-			console.log(autoZoom);
-			console.log(population);
 		}
 
 		let map = new google.maps.Map(document.getElementById('map'), {
@@ -132,8 +112,6 @@ $(function () {
 		});
 	};
 	let getForecasts = (locationKey) => {
-		$('#forecasts, #details').empty();
-
 		forecastsUrl = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&language=${language}&details=${details}&metric=${isMetric}`;
 		$.ajax({
 			type: 'GET',
@@ -168,8 +146,8 @@ $(function () {
 					} else {
 						icon = `${days[i].Day.Icon}.png`;
 					}
-					forecasts += `<div id="forecast-${i+1}"><h1>${descritpion[i]}</h1><br/><img class="forecast-icon" src="images/${icon}" width="75px" height="45px"/><p class="main-temp">${minmaxTemp}</p><br/><p>${realTemp}</p><p>${forecastDescription}</p></div>`;
-					detailedForecasts.push(`<div class="detailed"><ul>${minTemp}${maxTemp}${dayRainProbability}${nightRainProbability}${dayRainfall}${nightRainfall}${daySnowfall}${nightSnowfall}${dayWindSpeed}${nightWindSpeed}</ul></div>`);
+					forecasts += `<div id="forecast-${i+1}"><h1 id="description">${descritpion[i]}</h1><br/><img class="forecast-icon" src="images/${icon}" width="75px" height="45px"/><p class="main-temp">${minmaxTemp}</p><br/><p>${realTemp}</p><p>${forecastDescription}</p></div>`;
+					detailedForecasts.push(`<div id="detailed-description-${i+1}"class="detailed"><ul>${minTemp}${maxTemp}${dayRainProbability}${nightRainProbability}${dayRainfall}${nightRainfall}${daySnowfall}${nightSnowfall}${dayWindSpeed}${nightWindSpeed}</ul></div>`);
 				}
 				
 				$('#forecasts').html(forecasts);
@@ -180,18 +158,18 @@ $(function () {
 		});
 		mainView();
 	};
+	$('#search-btn').click(() => {
+		$('#detailed-1, #detailed-2, #detailed-3').hide();
+		let inputText = $('#search-bar').val();
+		searchCityLocation(inputText);
+	});
 	$('#search-bar').keypress(function (e) {
 		if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-			let inputText = $('#search-bar').val();
-			searchCityLocation(inputText);
 			$('#search-btn').click();
 			return false;
 		} else {
 			return true;
 		}
 	});
-	$('#search-btn').click(() => {
-		let inputText = $('#search-bar').val();
-		searchCityLocation(inputText);
-	});
+	
 });
