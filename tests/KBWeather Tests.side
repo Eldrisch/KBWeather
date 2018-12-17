@@ -1,0 +1,404 @@
+{
+  "id": "91d5cc4f-ed8b-4960-b162-3c2443b3b095",
+  "version": "1.1",
+  "name": "KBWeather Tests",
+  "url": "http://kbweather.kbaranowski.pl",
+  "tests": [{
+    "id": "6f1a0354-b54e-408c-9209-451e24df44db",
+    "name": "City Search Test",
+    "commands": [{
+      "id": "47718584-4306-4064-9e90-df32ac04cab7",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dc0f4445-ba37-4d9c-8206-11af373683e7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "857x625",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3f951afe-d3cf-4788-ad85-1d052458c394",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-bar",
+      "targets": [
+        ["id=search-bar", "id"],
+        ["css=#search-bar", "css"],
+        ["css=#search-bar", "css:finder"],
+        ["xpath=//input[@id='search-bar']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b790dc87-adec-4743-b7e3-3e1f627e1184",
+      "comment": "",
+      "command": "type",
+      "target": "id=search-bar",
+      "targets": [
+        ["id=search-bar", "id"],
+        ["css=#search-bar", "css"],
+        ["css=#search-bar", "css:finder"],
+        ["xpath=//input[@id='search-bar']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Londyn"
+    }, {
+      "id": "6cf4672d-1e9c-451a-bd18-b725a2a4149c",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-btn",
+      "targets": [
+        ["id=search-btn", "id"],
+        ["css=#search-btn", "css"],
+        ["css=#search-btn", "css:finder"],
+        ["xpath=//input[@id='search-btn']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "edb55ef3-f210-45c3-a293-e72d1bf49697",
+    "name": "Slide Panels Test",
+    "commands": [{
+      "id": "30da87bb-0d5f-4507-a0a7-43a3bace2310",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d1b4b153-937b-48a6-a0c9-126120a0782b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "857x625",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c50bbea-cf00-400d-8375-1e0d7b0405b6",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-bar",
+      "targets": [
+        ["id=search-bar", "id"],
+        ["css=#search-bar", "css"],
+        ["css=#search-bar", "css:finder"],
+        ["xpath=//input[@id='search-bar']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbc13fd2-29e4-446f-bf0d-77cb8da0b08c",
+      "comment": "",
+      "command": "type",
+      "target": "id=search-bar",
+      "targets": [
+        ["id=search-bar", "id"],
+        ["css=#search-bar", "css"],
+        ["css=#search-bar", "css:finder"],
+        ["xpath=//input[@id='search-bar']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Londyn"
+    }, {
+      "id": "bab598cc-161f-4e76-a041-f4c3fcb56293",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-btn",
+      "targets": [
+        ["id=search-btn", "id"],
+        ["css=#search-btn", "css"],
+        ["css=#search-btn", "css:finder"],
+        ["xpath=//input[@id='search-btn']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1cc4a68d-3e10-49d1-b2b5-3890bc0056ec",
+      "comment": "",
+      "command": "click",
+      "target": "css=img.forecast-icon",
+      "targets": [
+        ["css=img.forecast-icon", "css"],
+        ["css=#forecast-1 > .forecast-icon", "css:finder"],
+        ["xpath=//div[@id='forecast-1']/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ceeff77-b92c-4a0a-a96b-febfa4ed7077",
+      "comment": "",
+      "command": "click",
+      "target": "css=img.forecast-icon",
+      "targets": [
+        ["css=img.forecast-icon", "css"],
+        ["css=#forecast-1 > .forecast-icon", "css:finder"],
+        ["xpath=//div[@id='forecast-1']/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "978bdf31-515c-4d01-bac6-d47511485f3f",
+      "comment": "",
+      "command": "click",
+      "target": "css=#forecast-2 > img.forecast-icon",
+      "targets": [
+        ["css=#forecast-2 > img.forecast-icon", "css"],
+        ["css=#forecast-2 > .forecast-icon", "css:finder"],
+        ["xpath=//div[@id='forecast-2']/img", "xpath:idRelative"],
+        ["xpath=//div[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf97730c-a375-4fb1-9714-e2c4eeba4786",
+      "comment": "",
+      "command": "click",
+      "target": "css=#forecast-2 > img.forecast-icon",
+      "targets": [
+        ["css=#forecast-2 > img.forecast-icon", "css"],
+        ["css=#forecast-2 > .forecast-icon", "css:finder"],
+        ["xpath=//div[@id='forecast-2']/img", "xpath:idRelative"],
+        ["xpath=//div[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80ba2514-038c-43d1-b49f-a5bb3c3c01bb",
+      "comment": "",
+      "command": "click",
+      "target": "css=#forecast-3 > p:nth-child(6)",
+      "targets": [
+        ["css=#forecast-3 > p:nth-child(6)", "css:finder"],
+        ["xpath=//div[@id='forecast-3']/p[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/p[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a55ef45-02f6-4a55-844a-199217e2589c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#forecast-3 > p:nth-child(6)",
+      "targets": [
+        ["css=#forecast-3 > p:nth-child(6)", "css:finder"],
+        ["xpath=//div[@id='forecast-3']/p[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/p[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b7441e5e-af9b-48af-b07b-05aa943ecdde",
+    "name": "Multiple Locations Test",
+    "commands": [{
+      "id": "19ff6b3d-3b1a-48b1-b0a4-cac5d4c37ae4",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "85fdcd40-2287-48ab-b614-ae98445dd50d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "857x625",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c42c26a8-033b-47d6-ba61-74006ed1e717",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-bar",
+      "targets": [
+        ["id=search-bar", "id"],
+        ["css=#search-bar", "css"],
+        ["css=#search-bar", "css:finder"],
+        ["xpath=//input[@id='search-bar']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1437f06c-1b47-4fe5-a215-cdb7261ec9b9",
+      "comment": "",
+      "command": "type",
+      "target": "id=search-bar",
+      "targets": [
+        ["id=search-bar", "id"],
+        ["css=#search-bar", "css"],
+        ["css=#search-bar", "css:finder"],
+        ["xpath=//input[@id='search-bar']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Warszawa"
+    }, {
+      "id": "93824d82-f942-41af-afac-8a812f7a880e",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-btn",
+      "targets": [
+        ["id=search-btn", "id"],
+        ["css=#search-btn", "css"],
+        ["css=#search-btn", "css:finder"],
+        ["xpath=//input[@id='search-btn']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "604d1f4b-44fb-4343-b2f9-ff64c35216ee",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=container",
+      "targets": [
+        ["id=container", "id"],
+        ["css=#container", "css"],
+        ["css=#container", "css:finder"],
+        ["xpath=//body[@id='container']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "834,329"
+    }, {
+      "id": "ef1ef6f6-3de2-4cb3-ab8f-04fb164c6d4d",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=container",
+      "targets": [
+        ["id=container", "id"],
+        ["css=#container", "css"],
+        ["css=#container", "css:finder"],
+        ["xpath=//body[@id='container']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "834,329"
+    }, {
+      "id": "80387b3e-c3d2-4ab8-a782-70d7da65c346",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=container",
+      "targets": [
+        ["id=container", "id"],
+        ["css=#container", "css"],
+        ["css=#container", "css:finder"],
+        ["xpath=//body[@id='container']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "834,329"
+    }, {
+      "id": "5523f84e-d02b-4e10-84ca-7d14ffca2bb1",
+      "comment": "",
+      "command": "click",
+      "target": "id=1",
+      "targets": [
+        ["id=1", "id"],
+        ["css=#\\31", "css:finder"],
+        ["xpath=//li[@id='1']", "xpath:attributes"],
+        ["xpath=//div[@id='multiple-locations']/li[2]", "xpath:idRelative"],
+        ["xpath=//li[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3649dd71-ade3-4f37-9135-ca49ebc4bdac",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f5faea54-52c4-4baa-9a90-c7722019d912",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=container",
+      "targets": [
+        ["id=container", "id"],
+        ["css=#container", "css"],
+        ["css=#container", "css:finder"],
+        ["xpath=//body[@id='container']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "831,231"
+    }, {
+      "id": "ced8273c-7435-48e5-b6e1-4fe64149e270",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=container",
+      "targets": [
+        ["id=container", "id"],
+        ["css=#container", "css"],
+        ["css=#container", "css:finder"],
+        ["xpath=//body[@id='container']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "831,231"
+    }, {
+      "id": "a4f68f49-8bab-4309-bcfe-656b8174ec94",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=container",
+      "targets": [
+        ["id=container", "id"],
+        ["css=#container", "css"],
+        ["css=#container", "css:finder"],
+        ["xpath=//body[@id='container']", "xpath:attributes"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": "831,231"
+    }]
+  }, {
+    "id": "8e40147e-0a18-46f0-b506-f9e064891a81",
+    "name": "Verify Content Test",
+    "commands": [{
+      "id": "84800267-ec44-4830-9ed2-9640499050e3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa660248-74f3-4c9d-b8a7-5356d94203f6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1128x715",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d02befd5-edaf-420b-b99a-e25f9f378043",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "KB Weather",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5209777-3661-49d8-a6f2-8d43122c7da4",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "KB Weather",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8057f538-2749-4db6-b5e2-7bb402761946",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "KB Weather",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2d75b95d-5a9e-4387-968c-8d13ef68da88",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://kbweather.kbaranowski.pl/"],
+  "plugins": []
+}
