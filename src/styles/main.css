@@ -25,6 +25,7 @@ html {
 body {
     overflow-y: scroll;
     min-width: 340px;
+    min-height: 200px;
     transition: all 1s ease;
 }
 html, body, div, a, p, header, section, article, input, blockquote, h1, h2, h3, h4, h5, h6, ol, ul, footer {
@@ -144,6 +145,7 @@ input:focus {
     color: var(--background-color);
     height: 260px;
     z-index: 5;
+    font-size: 95%;
 }
 #detailed-1 {
     position: absolute;
@@ -210,7 +212,10 @@ input:focus {
     font-size: 1.75em;
 }
 .night-temp {
-    font-size: 80%;
+    font-size: 70%;
+    color: var(--dark-color);
+}
+.night-temp-real {
     color: var(--dark-color);
 }
 .background-cloudy {
@@ -269,7 +274,7 @@ input:focus {
         width: 300px;
     }
     #main {
-        font-size: 70%;
+        font-size: 75%;
         max-width: 570px;
         min-width: 570px;
     }
@@ -279,13 +284,12 @@ input:focus {
     #forecasts div, .detailed {
         min-width: 150px;
         max-width: 150px;
-        
     }
     #map {
         height: 250px;
     }
     #detailed-1, #detailed-2, #detailed-3 {
-        top: 369px;
+        top: 371px;
     }
     #detailed-1 {
         left: calc(50% - 285px);
@@ -299,6 +303,10 @@ input:focus {
     .detailed {
         font-size: 80%;
         height: 210px;
+    }
+    #multiple-locations > h3 {
+        padding: 10px 5px;
+        font-size: 135%;
     }
 }
 
@@ -347,11 +355,15 @@ input:focus {
         min-width: 130px;
         max-width: 130px;
         height: 120px;
+        font-size: 76%;
+    }
+    #multiple-locations > h3 {
+        font-size: 100%;
     }
 }
 @media screen and (max-width: 340px) {
     body {
-        overflow-x: scroll;
-        
+        overflow-x: scroll;   
+        overflow-y: scroll;     
     }
 }

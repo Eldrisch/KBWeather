@@ -7,7 +7,7 @@ $(function () {
 	let forecastsUrl = "";
 	let language = "pl-pl";
 	let details = true;
-	const apiKey = "7VebdzQ49vM27xSKc5a6fe3QCuCbEAub";
+	const apiKey = "xeO8Hjb2NIOUahKyM82KyrUFqiK6TL74";
 
 	let searchCityLocation = (inputText) => {
 		
@@ -140,13 +140,13 @@ $(function () {
 					nightForecastDescription = `<li>${days[i].Night.IconPhrase}</li>`;
 					dayRainProbability = `<li>Prawdopodobieństwo deszczu: ${days[i].Day.RainProbability}%</li>`;
 					nightRainProbability = `<li>Prawdopodobieństwo deszczu: ${days[i].Night.RainProbability}</li>`;
-					realTemp = `Odczuwalna ${days[i].RealFeelTemperature.Maximum.Value}°<span class="night-temp">/${days[i].RealFeelTemperature.Minimum.Value}°${days[i].RealFeelTemperature.Minimum.Unit}</span>`;
+					realTemp = `Odczuwalna ${days[i].RealFeelTemperature.Maximum.Value}°<span class="night-temp-real">/${days[i].RealFeelTemperature.Minimum.Value}°${days[i].RealFeelTemperature.Minimum.Unit}</span>`;
 					if (days[i].Day.Icon < 10) {
 						icon = `0${days[i].Day.Icon}.png`;
 					} else {
 						icon = `${days[i].Day.Icon}.png`;
 					}
-					forecasts += `<div id="forecast-${i+1}"><h1 id="description">${descritpion[i]}</h1><br/><img class="forecast-icon" src="images/${icon}" width="75px" height="45px"/><p class="main-temp">${minmaxTemp}</p><br/><p>${realTemp}</p><p>${forecastDescription}</p></div>`;
+					forecasts += `<div id="forecast-${i+1}"><h1 id="description">${descritpion[i]}</h1><br/><img class="forecast-icon" src="images/${icon}" width="60px" height="45px"/><p class="main-temp">${minmaxTemp}</p><br/><p>${realTemp}</p><p>${forecastDescription}</p></div>`;
 					detailedForecasts.push(`<div id="detailed-description-${i+1}"class="detailed"><ul>${minTemp}${maxTemp}${dayRainProbability}${nightRainProbability}${dayRainfall}${nightRainfall}${daySnowfall}${nightSnowfall}${dayWindSpeed}${nightWindSpeed}</ul></div>`);
 				}
 				
