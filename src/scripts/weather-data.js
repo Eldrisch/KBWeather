@@ -10,7 +10,7 @@ $(function () {
 	const apiKey = "xeO8Hjb2NIOUahKyM82KyrUFqiK6TL74";
 
 	let searchCityLocation = (inputText) => {
-		
+		$('#multiple-locations').empty();
 		let encodedText = encodeURIComponent(inputText);
 		locationUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${encodedText}&language=${language}&details=${details}`;
 		$.ajax({
