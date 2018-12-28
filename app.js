@@ -1,3 +1,4 @@
+// serwer lokalny używany przez gulpa
 const express = require('express');
 const path = require('path');
 

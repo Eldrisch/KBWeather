@@ -7,11 +7,11 @@ $(function () {
 	let forecastsUrl = "";
 	let language = "pl-pl";
 	let details = true;
-	const apiKey = "xeO8Hjb2NIOUahKyM82KyrUFqiK6TL74";
+	const apiKey = "xeO8Hjb2NIOUahKyM82KyrUFqiK6TL74"; // klucz Accuweather API
 
-	let searchCityLocation = (inputText) => {
-		$('#multiple-locations').empty();
-		let encodedText = encodeURIComponent(inputText);
+	let searchCityLocation = (inputText) => { // funkcja, która pozyskuje klucz lokalizacji dla danego miasta
+		$('#multiple-locations').empty(); // div dla wielokrotnych lokacji oczyszczany przed każdym wyszukaniem miasta
+		let encodedText = encodeURIComponent(inputText); // kodowanie znaków specjalnych
 		locationUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${encodedText}&language=${language}&details=${details}`;
 		$.ajax({
 			type: "GET",
@@ -19,22 +19,24 @@ $(function () {
 			dataType: "jsonp",
 			cache: true,
 			jsonpCallback: "callback",
-			success: (data) => { 
-				cityLocationFound(data);
+			success: (data) => { // jeżeli połączenie zostanie uzyskane, dane zostają przekazane kolejnej funkcji
+				cityLocationFound(data); 
 			},
-			error: function (xhr) {
+			error: function (xhr) { // jeżeli aplikacja nie uzyska danych, wyświetli się błąd w konsoli i pod paskiem wyszukiwania
 				console.log('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+				$('error').html('<p>Nie udało połączyć się z bazą danych, sprawdź połączenie internetowe !!</p>');
 			}
 		});
 	};
-	let cityLocationFound = (data) => {
+	let cityLocationFound = (data) => { 
+		// funckja ta sprawdza czy miasto występuje na mapie, wyświetla mapę i wysyła klucz miasta do funkcji, która pozyskuje dane pogodowe
 		let locationKey = null;
 		let mapLatitude = null;
 		let mapLongitude = null;
 		let error = '';
 		let multipleLocations = ``;
 		let population = null;
-		if (data.length == 1) {
+		if (data.length == 1) { // jeżeli miasto występuje tylko raz na mapie, ten warunek zostaje wykonany
 			locationKey = data[0].Key;
 			mapLatitude = data[0].GeoPosition.Latitude;
 			mapLongitude = data[0].GeoPosition.Longitude;
@@ -42,17 +44,17 @@ $(function () {
 			getForecasts(locationKey);
 			initMap(mapLatitude, mapLongitude, population);
 		}
-		else if (data.length == 0) {
+		else if (data.length == 0) { // jeżeli miasto nie występuje w ogóle, ten warunek zostaje wykonany
 			error += '<p>Nie ma takiego miasta. Sprawdź czy poprawnie wpisałeś nazwę!</p>';
 			$('#error').html(error);
 		}
-		else {
+		else { // jeżeli miasto występuje więcej niż raz na mapie, ten warunek zostaje spełniony
 			locationKey = data[0].Key;
 			mapLatitude = data[0].GeoPosition.Latitude;
 			mapLongitude = data[0].GeoPosition.Longitude;
 			population = data[0].Details.Population;
 			getForecasts(locationKey);
-			initMap(mapLatitude, mapLongitude, population);
+			initMap(mapLatitude, mapLongitude, population); 
 			let locationsInfo = 'Hmmm... Wygląda na to, że Twoje miasto występuje na mapie świata więcej niż raz. Wybierz swoje z listy poniżej:';
 			multipleLocations += `<h3>${locationsInfo}</h3>`;
 			for (let i = 0; i < data.length; i++) {
@@ -82,8 +84,10 @@ $(function () {
 			
 		}
 	};
-	let initMap = (mapLatitude, mapLongitude, population) => {
+	let initMap = (mapLatitude, mapLongitude, population) => { 
+		// funkcja, która pozyskuje współrzędne geograficzne wybranego miasta oraz liczbę populacji dla automatycznego przybliżenia miasta
 		let autoZoom = null;
+		// warunki, które wyznaczają wartość przybliżenia dla miasta na podstawie populacji
 		if (population > 15000000) {
 			autoZoom = 8;
 		} else if (population > 1500000) {
@@ -99,7 +103,7 @@ $(function () {
 		} else {
 			autoZoom = 14;
 		}
-
+		// zainicjowanie mapy
 		let map = new google.maps.Map(document.getElementById('map'), {
 			center: { lat: mapLatitude, lng: mapLongitude },
 			zoom: autoZoom,
@@ -112,6 +116,7 @@ $(function () {
 		});
 	};
 	let getForecasts = (locationKey) => {
+		// funkcja, która pozyskuje dane pogodowe oraz generuje zawartość na stronie
 		forecastsUrl = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&language=${language}&details=${details}&metric=${isMetric}`;
 		$.ajax({
 			type: 'GET',
@@ -156,14 +161,15 @@ $(function () {
 				$('#detailed-3').html(detailedForecasts[2]);
 			}
 		});
+		// inicjacja funkcji odpowiedzialnej za widoki
 		mainView();
 	};
-	$('#search-btn').click(() => {
+	$('#search-btn').click(() => { // funkcja która jest odpowiedzialna za działanie przycisku "prognozuj"
 		$('#detailed-1, #detailed-2, #detailed-3').hide();
 		let inputText = $('#search-bar').val();
 		searchCityLocation(inputText);
 	});
-	$('#search-bar').keypress(function (e) {
+	$('#search-bar').keypress(function (e) { // funkcja, która jest odpowiedzialna za działanie przycisku enter zamiast przycisku "prognozuj"
 		if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
 			$('#search-btn').click();
 			return false;
