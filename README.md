@@ -39,7 +39,7 @@ yarn install
 
 Po zakończonej instalacji wystarczy wpisać w konsoli polecenie dla gulp, które utworzy nam serwer z automatycznie odświeżającą się przeglądarką przy każdej zapisanej zmianie:
 ```
-npm gulp
+gulp
 ```
 
 ## Testowanie 
